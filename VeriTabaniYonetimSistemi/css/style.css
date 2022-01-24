@@ -1,0 +1,27 @@
+﻿body {
+}
+.well {
+    background-color: #1b1b1b;
+    border: 1px solid #1b1b1b;
+    min-height: 855px;
+    padding: 10px;
+}
+.span2 {
+    margin-left:0px;
+    margin-right:15px;
+}
+.navbar{
+    margin-bottom:1px;
+}
+.nav > li > a {
+    color: #999;
+    padding: 4px 4px;
+}
+    .nav > li > a:hover, .nav > li > a:focus {
+        background-color: #333;
+        -webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+        box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+        text-shadow: 0 1px 0 #ffffff;
+        color: #fff;
+       font-size:15px;
+    }
