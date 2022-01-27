@@ -49,13 +49,13 @@
                         <div class="icon1">
                             <span class="fa fa-user"></span>
                             <%--    <input type="text" id="ad" placeholder="Name" required="" />--%>
-                            <asp:TextBox ID="txtAd" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rvfAd" runat="server" ErrorMessage="Lütfen Adınızı Girin" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ControlToValidate="txtAd"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtAd" placeholder="Name" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rvfAd" runat="server"  ErrorMessage="Lütfen Adınızı Girin" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ControlToValidate="txtAd"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="icon1">
                             <span class="fa fa-user"></span>
-                            <asp:TextBox ID="txtSoyad" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtSoyad" placeholder="Surname" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvfSoyad" runat="server" ErrorMessage="Lütfen Soyadınızı Girin" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ControlToValidate="txtSoyad"></asp:RequiredFieldValidator>
 
                         </div>
@@ -63,18 +63,18 @@
 
                         <div class="icon1">
                             <span class="fa fa-envelope"></span>
-                            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtEmail" placeholder="Email" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvfEmail" runat="server" ErrorMessage="Lütfen Email Adresinizi Girin" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="rgeEmail" ControlToValidate="txtEmail" runat="server" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ErrorMessage="Lütfen Geçerli bir Email Formatı Girin" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         </div>
                         <div class="icon1">
                             <span class="fa fa-user"></span>
-                            <asp:TextBox ID="txtKullaniciAd" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtKullaniciAd" placeholder="Username" runat="server"></asp:TextBox>
 
                         </div>
                         <div class="icon1">
                             <span class="fa fa-lock"></span>
-                            <asp:TextBox ID="txtSifre" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtSifre" placeholder="Password" runat="server"></asp:TextBox>
                         </div>
 
 

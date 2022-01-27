@@ -80,7 +80,7 @@
             <ul class="nav nav-list">
               <li class="nav-header">MENU</li>
    
-              <li><a href="#">Tablo Oluştur</a></li>
+              <li><a href="TabloOlustur.aspx">Tablo Oluştur</a></li>
               <li><a href="#">Tablo Düzenle</a></li>
               <li><a href="#">Veri Girişi</a></li>
             

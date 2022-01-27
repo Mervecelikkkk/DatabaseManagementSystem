@@ -47,12 +47,12 @@
                         <div class="icon1">
                             <span class="fa fa-user"></span>
                             <asp:TextBox ID="txtKullaniciAd" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvKullaniciAd" runat="server" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ControlToValidate="txtKullaniciAd" ErrorMessage="Lütfen Giriş Yapabilmek için Bir Kullanıcı Adı Girin"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfvKullaniciAd" placeholder="Username" runat="server" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ControlToValidate="txtKullaniciAd" ErrorMessage="Lütfen Giriş Yapabilmek için Bir Kullanıcı Adı Girin"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="icon1">
                             <span class="fa fa-lock"></span>
-                            <asp:TextBox ID="txtSifre" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtSifre" placeholder="Password" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvSifre" runat="server" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ControlToValidate="txtSifre" ErrorMessage="Lütfen Giriş Yapabilmek için Şifrenizi Girin"></asp:RequiredFieldValidator>
                         </div>
                       <div class="" style=" background:#007cc0; height: 30px;"; >
