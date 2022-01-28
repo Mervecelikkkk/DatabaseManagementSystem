@@ -2,19 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"> 
    
 
-    <style type="text/css">
-        .col-12 {
-            height: 229px;
-        }
-    </style>
-   
-
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <div class="row">
-      <div class="col-12">
-
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
+                 
+            <h3>Tablo Oluştur</h3>
+          <hr />
           <asp:Label ID="lblTblAd" runat="server" Font-Bold="true" Text="Tablo Adı"></asp:Label>
           <asp:TextBox ID="txtTblAd" runat="server"></asp:TextBox>
 
@@ -64,6 +57,5 @@
                     <asp:Button ID="tblOlustur" style="margin-right:440px; background-color:#1b1b1b; color:white;  margin-top:10px; float:right"  runat="server" Text="Tablo Oluştur" OnClick="tblOlustur_Click" />
     </div>
    
-   </div>
-   </div>
+
 </asp:Content>

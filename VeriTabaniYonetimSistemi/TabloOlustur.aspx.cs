@@ -31,22 +31,13 @@ namespace VeriTabaniYonetimSistemi
                             DataTable dt = (DataTable)ViewState["CurrentTable"];
                             if (dt.Rows.Count > 0)
                             {
-                                StrQuery = @"CREATE TABLE " + txtTblAd.Text + "(";
+                                StrQuery = @"CREATE TABLE " + txtTblAd.Text + "(id int primary key identity(1,1), kullaniciid int, ";
 
                                 for (int i = 0; i < dt.Rows.Count; i++)
                                 {
                                     TextBox txt1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
                                     ListBox lst1 = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("ListBox1");
                                     ListBox lst2 = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("ListBox2");
-
-                                    //txt1.Text = dt.Rows[i]["Column1"].ToString();
-                                    //lst1.SelectedValue = dt.Rows[i]["Column2"].ToString();
-                                    //lst2.SelectedValue = dt.Rows[i]["Column3"].ToString();
-
-                                    //string t1 = txt1.Text;
-                                    //string l2 = lst1.SelectedValue.ToString();
-                                    //string l3 = lst2.SelectedValue.ToString();
-
 
                                     StrQuery += txt1.Text + " " + lst1.SelectedValue + " " + lst2.SelectedValue;
 
@@ -77,86 +68,7 @@ namespace VeriTabaniYonetimSistemi
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
                 return;
             }
-
-            // string strQuery;
-            // try
-            // {
-            //     SqlCommand cmd = new SqlCommand();
-
-            //         cmd.Connection = conn;
-            //         conn.Open();
-
-
-            //             DataTable dt = (DataTable)ViewState["CurrentTable"];
-
-
-            //             for (int i = 0; i <Gridview1.Rows.Count; i++)
-            //             {
-            //                 strQuery = @"CREATE TABLE" + " " + txtTblAd.Text +"("+ Gridview1.Rows[i].Cells[1].Text + " " + Gridview1.Rows[i].Cells[2].Text + " " + Gridview1.Rows[i].Cells[3].Text + " " + ");";
-
-            //                 cmd.CommandText = strQuery;
-            //                 cmd.ExecuteNonQuery();
-            //             }
-
-
-
-            // }
-            //catch(Exception ex)
-            // {
-            //     ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
-            //     return;
-            // }
-
-
-            // string strQuery;
-            // try
-            // {
-            //     SqlCommand cmd = new SqlCommand();
-
-            //         cmd.Connection = conn;
-            //         conn.Open();
-
-
-            //             DataTable dt = (DataTable)ViewState["CurrentTable"];
-
-
-            //             for (int i = 0; i <Gridview1.Rows.Count; i++)
-            //             {
-            //                 strQuery = @"CREATE TABLE" + " " + txtTblAd.Text +"("+ Gridview1.Rows[i].Cells[1].Text + " " + Gridview1.Rows[i].Cells[2].Text + " " + Gridview1.Rows[i].Cells[3].Text + " " + ");";
-
-            //                 cmd.CommandText = strQuery;
-            //                 cmd.ExecuteNonQuery();
-            //             }
-
-
-
-            // }
-            //catch(Exception ex)
-            // {
-            //     ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
-            //     return;
-            // }
-
-
-            //string createTableScript = string.Format("CREATE TABLE {0} ([{1}] [int] IDENTITY(1,1) NOT NULL)", Texttxt1.Text,Textlst1.Text);
-
-
-            //string sql = "create table "+Texttxt1.Text +"(";
-
-            //   for (int i = 0; i <Convert.ToInt16(Textlst2.Text); i++)
-
-            //   {
-
-            //       sql += TextBox4.Text +" "+Textlst1.Text +",";
-
-            //   }
-
-            //   sql += ")";
-            //   SqlCommand cmd = new SqlCommand (sql, conn);
-
-            //   conn.Open();
-            //   cmd.ExecuteNonQuery();
-            //   conn.Close();
+         
         }
 
         private void SetInitialRow()
@@ -174,7 +86,7 @@ namespace VeriTabaniYonetimSistemi
             dr["Column3"] = string.Empty;
             dt.Rows.Add(dr);
 
-            //Store the DataTable in ViewState
+     
             ViewState["CurrentTable"] = dt;
 
             Gridview1.DataSource = dt;
@@ -193,7 +105,7 @@ namespace VeriTabaniYonetimSistemi
                 {
                     for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
                     {
-                        //extract the TextBox values
+                      
                         TextBox txt1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
                         ListBox lst1 = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("ListBox1");
                         ListBox lst2 = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("ListBox2");

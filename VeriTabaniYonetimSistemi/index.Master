@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 
 
     <script src="js/bootstrap.js" type="text/javascript"></script>
@@ -81,20 +83,18 @@
               <li class="nav-header">MENU</li>
    
               <li><a href="TabloOlustur.aspx">Tablo Oluştur</a></li>
-              <li><a href="#">Tablo Düzenle</a></li>
-              <li><a href="#">Veri Girişi</a></li>
-            
-              <li><a href="#">Veri Listeleme</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
+              <li><a href="TabloDuzenle.aspx">Tablo Düzenle</a></li>
+              <li><a href="VeriGirisi.aspx">Veri Girişi</a></li>
+              <li><a href="VeriListeleme.aspx">Veri Listeleme</a></li>
+        
         
        
             </ul>
           </div><!--/.well -->
         </div>
 
-   <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+   <div style="margin:10px;">
+            <asp:ContentPlaceHolder  ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
    </div>
     </form>

@@ -76,7 +76,8 @@
     <Content Include="css\style.css" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
-    <Content Include="WebForm1.aspx" />
+    <Content Include="TabloDuzenle.aspx" />
+    <Content Include="VeriGirisi.aspx" />
     <None Include="img\bg" />
     <None Include="img\bg1" />
     <Content Include="HesapAktif.aspx" />
@@ -87,6 +88,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="TabloOlustur.aspx" />
+    <Content Include="VeriListeleme.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +128,13 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TabloDuzenle.aspx.cs">
+      <DependentUpon>TabloDuzenle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabloDuzenle.aspx.designer.cs">
+      <DependentUpon>TabloDuzenle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TabloOlustur.aspx.cs">
       <DependentUpon>TabloOlustur.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -133,12 +142,19 @@
     <Compile Include="TabloOlustur.aspx.designer.cs">
       <DependentUpon>TabloOlustur.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="VeriGirisi.aspx.cs">
+      <DependentUpon>VeriGirisi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="VeriGirisi.aspx.designer.cs">
+      <DependentUpon>VeriGirisi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VeriListeleme.aspx.cs">
+      <DependentUpon>VeriListeleme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VeriListeleme.aspx.designer.cs">
+      <DependentUpon>VeriListeleme.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
