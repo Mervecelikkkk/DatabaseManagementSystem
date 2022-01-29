@@ -25,7 +25,10 @@ namespace VeriTabaniYonetimSistemi
 
             try
             {
+              
+                
                 SqlCommand cmd = new SqlCommand("insert into Kullanicilar (ad, soyad, kullaniciAd, email, sifre) values (@ad, @soyad, @kullaniciAd, @email, @sifre) ", conn);
+                SqlCommand cmdSchema = new SqlCommand("Create Schema "+txtKullaniciAd.Text, conn);
 
                 cmd.Parameters.AddWithValue("@ad", txtAd.Text);
                 cmd.Parameters.AddWithValue("@soyad", txtSoyad.Text);
@@ -38,7 +41,8 @@ namespace VeriTabaniYonetimSistemi
                     conn.Open();
                 }
                 cmd.ExecuteNonQuery();
-
+                cmdSchema.ExecuteNonQuery();
+              
                 MailAddress to = new MailAddress(txtEmail.Text);
 
                 MailAddress from = new MailAddress("clkmerve3@gmail.com");
@@ -92,7 +96,7 @@ namespace VeriTabaniYonetimSistemi
                 smtp.Send(mail);
 
                 clearControls();
-                //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
+              
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Lütfen Hesabınızı Aktif Etmek için Email Adresinize Gönderilen Linke Tıklayınız.');", true);
 

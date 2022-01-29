@@ -92,6 +92,7 @@
                 <div class="social">
                     <ul>
                         <li>Or Login Using</li>
+                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                         <li><a href="#" class="facebook"><span class="fab fa-facebook-f"></span></a></li>
                         <li><a href="#" class="twitter"><span class="fab fa-twitter"></span></a></li>
                         <li><a href="#" class="linkedin"><span class="fab fa-linkedin"></span></a></li>
