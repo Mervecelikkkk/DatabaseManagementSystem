@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
-                 
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             <h3>Tablo Oluştur</h3>
           <hr />
           <asp:Label ID="lblTblAd" runat="server" Font-Bold="true" Text="Tablo Adı"></asp:Label>

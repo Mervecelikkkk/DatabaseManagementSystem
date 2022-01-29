@@ -68,7 +68,6 @@
                            <div>
                             <asp:CheckBox ID="chkRemember" ForeColor="White" runat="server" BorderColor="White" Checked="True"  AutoPostBack="True" />
               
-                              <asp:Label ID="Label1" runat="server" Text="Remember Me!" Font-Italic="False" ForeColor="White"></asp:Label>
                            </div>
                   
            

@@ -21,7 +21,8 @@ namespace VeriTabaniYonetimSistemi
                 //lblMsj.Text = Session["KullaniciAd"].ToString();
 
             }
-
+         
+        
         }
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
 
@@ -30,7 +31,7 @@ namespace VeriTabaniYonetimSistemi
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select* from Kullanicilar Where kullaniciAd=@kullaniciAd and sifre=@sifre", conn);
+                SqlCommand cmd = new SqlCommand("Select kullaniciAd,sifre from Kullanicilar Where kullaniciAd=@kullaniciAd and sifre=@sifre", conn);
                 cmd.Parameters.AddWithValue("@kullaniciAd", txtKullaniciAd.Text);
                 cmd.Parameters.AddWithValue("@sifre", txtSifre.Text);
 
@@ -52,7 +53,7 @@ namespace VeriTabaniYonetimSistemi
 
                         Session["KullaniciAd"] = txtKullaniciAd.Text;
                         Session["Sifre"] = txtSifre.Text;
-
+                    
 
                     }
                     Response.Redirect("index.aspx");

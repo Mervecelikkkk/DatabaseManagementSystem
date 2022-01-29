@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection.Emit;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,60 +16,71 @@ namespace VeriTabaniYonetimSistemi
 
         protected void tblOlustur_Click(object sender, EventArgs e)
         {
+       
 
             string StrQuery;
-            try
+            if (Session["KullaniciAd"] != null)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
+                string sessionKAd = Session["KullaniciAd"].ToString();
+                try
                 {
-                    using (SqlCommand comm = new SqlCommand())
+                    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
                     {
-                        comm.Connection = conn;
-                        conn.Open();
-                        int rowIndex = 0;
-                        if (ViewState["CurrentTable"] != null)
+
+                        using (SqlCommand cmd = new SqlCommand())
                         {
-                            DataTable dt = (DataTable)ViewState["CurrentTable"];
-                            if (dt.Rows.Count > 0)
+                            cmd.Connection = conn;
+                            conn.Open();
+                            int rowIndex = 0;
+
+
+                            if (ViewState["CurrentTable"] != null)
                             {
-                                StrQuery = @"CREATE TABLE " + txtTblAd.Text + "(id int primary key identity(1,1), kullaniciid int, ";
-
-                                for (int i = 0; i < dt.Rows.Count; i++)
+                                DataTable dt = (DataTable)ViewState["CurrentTable"];
+                                if (dt.Rows.Count > 0)
                                 {
-                                    TextBox txt1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
-                                    ListBox lst1 = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("ListBox1");
-                                    ListBox lst2 = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("ListBox2");
 
-                                    StrQuery += txt1.Text + " " + lst1.SelectedValue + " " + lst2.SelectedValue;
 
-                                    if (i != dt.Rows.Count - 1)
+
+
+                                    StrQuery = @"CREATE TABLE " +sessionKAd+"."+txtTblAd.Text + "(id int primary key identity(1,1), kullaniciid int, ";
+
+                                    for (int i = 0; i < dt.Rows.Count; i++)
                                     {
-                                        StrQuery += ",";
-                                    }
-                                    else
-                                    {
-                                        StrQuery += ");";
+                                        TextBox txt1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
+                                        ListBox lst1 = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("ListBox1");
+                                        ListBox lst2 = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("ListBox2");
+
+                                        StrQuery += txt1.Text + " " + lst1.SelectedValue + " " + lst2.SelectedValue;
+
+                                        if (i != dt.Rows.Count - 1)
+                                        {
+                                            StrQuery += ",";
+                                        }
+                                        else
+                                        {
+                                            StrQuery += ");";
+                                        }
+
+                                        rowIndex++;
                                     }
 
-                                    rowIndex++;
+                                    cmd.CommandText = StrQuery;
+                                    cmd.ExecuteNonQuery();
+
                                 }
-
-                                comm.CommandText = StrQuery;
-                                comm.ExecuteNonQuery();
-
                             }
+
+
                         }
-
-
                     }
                 }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
+                    return;
+                }
             }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
-                return;
-            }
-         
         }
 
         private void SetInitialRow()
@@ -162,12 +174,16 @@ namespace VeriTabaniYonetimSistemi
             if (!Page.IsPostBack)
             {
                 SetInitialRow();
+
             }
+       
+            
         }
 
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             AddNewRowToGrid();
+           
         }
 
 
