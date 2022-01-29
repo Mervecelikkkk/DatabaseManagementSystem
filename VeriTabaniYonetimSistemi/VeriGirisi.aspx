@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3 >Veri Girişi</h3>
      <hr />
-            <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList1" DataTextField="table_name"  runat="server"></asp:DropDownList>
 
        
  
