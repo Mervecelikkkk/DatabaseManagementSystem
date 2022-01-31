@@ -14,13 +14,13 @@ namespace VeriTabaniYonetimSistemi
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie cookie = new HttpCookie("KullaniciBilgi");
-            if (Session["KullaniciAd"] == null)
-            {
+            //HttpCookie cookie = new HttpCookie("KullaniciBilgi");
+            //if (Session["KullaniciAd"] == null)
+            //{
 
-                Session["KullaniciAd"] = cookie["KullaniciAd"].ToString();
-                Session["Sifre"] = cookie["Sifre"].ToString();
-            }
+            //    Session["KullaniciAd"] = cookie["KullaniciAd"].ToString();
+            //    Session["Sifre"] = cookie["Sifre"].ToString();
+            //}
     
         }
     }

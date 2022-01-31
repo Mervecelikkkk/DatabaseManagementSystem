@@ -16,8 +16,8 @@ namespace VeriTabaniYonetimSistemi
 
         protected void tblOlustur_Click(object sender, EventArgs e)
         {
-       
-
+  
+            
             string StrQuery;
             if (Session["KullaniciAd"] != null)
             {
@@ -40,18 +40,15 @@ namespace VeriTabaniYonetimSistemi
                                 if (dt.Rows.Count > 0)
                                 {
 
-
-
-
                                     StrQuery = @"CREATE TABLE " +sessionKAd+"."+txtTblAd.Text + "(id int primary key identity(1,1), kullaniciid int, ";
 
                                     for (int i = 0; i < dt.Rows.Count; i++)
                                     {
-                                        TextBox txt1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
-                                        ListBox lst1 = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("ListBox1");
-                                        ListBox lst2 = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("ListBox2");
+                                        TextBox txtKolon = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
+                                        ListBox lstVeri = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtKolonTipi");
+                                        ListBox lstNull = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("lstisNull");
 
-                                        StrQuery += txt1.Text + " " + lst1.SelectedValue + " " + lst2.SelectedValue;
+                                        StrQuery += txtKolon.Text + " " + lstVeri.SelectedValue + " " + lstNull.SelectedValue;
 
                                         if (i != dt.Rows.Count - 1)
                                         {
@@ -118,16 +115,16 @@ namespace VeriTabaniYonetimSistemi
                     for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
                     {
                       
-                        TextBox txt1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
-                        ListBox lst1 = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("ListBox1");
-                        ListBox lst2 = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("ListBox2");
+                        TextBox txtKolon = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
+                        ListBox lstVeri = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtKolonTipi");
+                        ListBox lstNull = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("lstisNull");
 
                         drCurrentRow = dtCurrentTable.NewRow();
                         drCurrentRow["RowNumber"] = i + 1;
 
-                        dtCurrentTable.Rows[i - 1]["Column1"] = txt1.Text;
-                        dtCurrentTable.Rows[i - 1]["Column2"] = lst1.Text;
-                        dtCurrentTable.Rows[i - 1]["Column3"] = lst2.Text;
+                        dtCurrentTable.Rows[i - 1]["Column1"] = txtKolon.Text;
+                        dtCurrentTable.Rows[i - 1]["Column2"] = lstVeri.Text;
+                        dtCurrentTable.Rows[i - 1]["Column3"] = lstNull.Text;
 
                         rowIndex++;
                     }
@@ -156,13 +153,13 @@ namespace VeriTabaniYonetimSistemi
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        TextBox txt1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
-                        ListBox lst1 = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("ListBox1");
-                        ListBox lst2 = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("ListBox2");
+                        TextBox txtKolon = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
+                        ListBox lstVeri = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtKolonTipi");
+                        ListBox lstNull = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("lstisNull");
 
-                        txt1.Text = dt.Rows[i]["Column1"].ToString();
-                        lst1.Text = dt.Rows[i]["Column2"].ToString();
-                        lst2.Text = dt.Rows[i]["Column3"].ToString();
+                        txtKolon.Text = dt.Rows[i]["Column1"].ToString();
+                        lstVeri.Text = dt.Rows[i]["Column2"].ToString();
+                        lstNull.Text = dt.Rows[i]["Column3"].ToString();
 
                         rowIndex++;
                     }

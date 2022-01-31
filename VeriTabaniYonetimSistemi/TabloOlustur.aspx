@@ -19,12 +19,12 @@
             <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />
             <asp:TemplateField HeaderText="Kolon Adı">
                 <ItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtKolonAdi" runat="server"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Veri Tipi">
                 <ItemTemplate>
-                    <asp:ListBox ID="ListBox1" Rows="1" runat="server">
+                    <asp:ListBox ID="lstVeriTipi" Rows="1" runat="server">
                            <asp:ListItem >Veri Tipi Seçiniz</asp:ListItem>
                            <asp:ListItem Value="Varchar(max)">Metin</asp:ListItem>
                            <asp:ListItem Value="int">Tam Sayı</asp:ListItem>
@@ -33,17 +33,16 @@
                            <asp:ListItem Value="Datetime">Tarih ve Saat</asp:ListItem>
                     </asp:ListBox>
                  
-                 <%--   <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>--%>
+          
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Boş Değer Girilebilsin">
                 <ItemTemplate>
-                    <asp:ListBox ID="ListBox2" Rows="1" runat="server">
+                    <asp:ListBox ID="lstisNull" Rows="1" runat="server">
                            <asp:ListItem Value=" " >Seçim Yapınız</asp:ListItem>
                            <asp:ListItem Value=" " >Evet</asp:ListItem>
                            <asp:ListItem Value="Not Null" >Hayır</asp:ListItem>
-                    </asp:ListBox>
-            <%--           <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>--%>
+                    </asp:ListBox>    
                 </ItemTemplate>
                 <FooterStyle HorizontalAlign="Right" />
                 <FooterTemplate>
@@ -54,7 +53,7 @@
             </Columns>
         </asp:gridview>
                  
-                    <asp:Button ID="tblOlustur" style="margin-right:440px; background-color:#1b1b1b; color:white;  margin-top:10px; float:right"  runat="server" Text="Tablo Oluştur" OnClick="tblOlustur_Click" />
+     <asp:Button ID="tblOlustur" style="margin-right:440px; background-color:#1b1b1b; color:white;  margin-top:10px; float:right"  runat="server" Text="Tablo Oluştur" OnClick="tblOlustur_Click" />
     </div>
    
 

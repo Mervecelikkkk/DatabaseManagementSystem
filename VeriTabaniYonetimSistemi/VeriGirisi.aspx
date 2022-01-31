@@ -4,8 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3 >Veri Girişi</h3>
      <hr />
-            <asp:DropDownList ID="DropDownList1" DataTextField="table_name"  runat="server"></asp:DropDownList>
 
-       
  
+            <asp:DropDownList ID="ddlTables" DataTextField="table_name"  AutoPostBack="true" runat="server"></asp:DropDownList>
+            
+            <div>
+        <asp:gridview ID="gvDataInput" runat="server" ShowFooter="True" AutoGenerateColumns="False" Width="296px">
+       
+        </asp:gridview>
+                 
+    </div>
 </asp:Content>

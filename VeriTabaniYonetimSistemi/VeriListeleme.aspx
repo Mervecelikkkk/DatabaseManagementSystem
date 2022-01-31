@@ -4,4 +4,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3>Veri Listeleme</h3>
     <hr />
+    <asp:DropDownList ID="ddlTables"  DataTextField="table_name"  runat="server"  AutoPostBack="true" OnSelectedIndexChanged="ddlTables_SelectedIndexChanged">
+    </asp:DropDownList>
+    <br />
+ <div>
+    <asp:GridView ID="gvList"  runat="server">
+    </asp:GridView>
+    </div>
 </asp:Content>
