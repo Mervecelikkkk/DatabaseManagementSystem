@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+ 
             <h3>Tablo Oluştur</h3>
           <hr />
           <asp:Label ID="lblTblAd" runat="server" Font-Bold="true" Text="Tablo Adı"></asp:Label>
@@ -14,7 +14,7 @@
           <br />
 
               <div>
-        <asp:gridview ID="Gridview1" runat="server" ShowFooter="true" AutoGenerateColumns="false">
+        <asp:gridview ID="gvCreateTable" runat="server" ShowFooter="true" AutoGenerateColumns="false">
             <Columns>
             <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />
             <asp:TemplateField HeaderText="Kolon Adı">

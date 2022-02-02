@@ -74,7 +74,7 @@
                         </div>
                         <div class="icon1">
                             <span class="fa fa-lock"></span>
-                            <asp:TextBox ID="txtSifre" placeholder="Password" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtSifre" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
                         </div>
 
 

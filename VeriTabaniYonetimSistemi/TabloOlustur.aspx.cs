@@ -44,9 +44,9 @@ namespace VeriTabaniYonetimSistemi
 
                                     for (int i = 0; i < dt.Rows.Count; i++)
                                     {
-                                        TextBox txtKolon = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
-                                        ListBox lstVeri = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtKolonTipi");
-                                        ListBox lstNull = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("lstisNull");
+                                        TextBox txtKolon = (TextBox)gvCreateTable.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
+                                        ListBox lstVeri = (ListBox)gvCreateTable.Rows[rowIndex].Cells[2].FindControl("lstVeriTipi");
+                                        ListBox lstNull = (ListBox)gvCreateTable.Rows[rowIndex].Cells[3].FindControl("lstisNull");
 
                                         StrQuery += txtKolon.Text + " " + lstVeri.SelectedValue + " " + lstNull.SelectedValue;
 
@@ -71,6 +71,7 @@ namespace VeriTabaniYonetimSistemi
 
                         }
                     }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -98,8 +99,8 @@ namespace VeriTabaniYonetimSistemi
      
             ViewState["CurrentTable"] = dt;
 
-            Gridview1.DataSource = dt;
-            Gridview1.DataBind();
+            gvCreateTable.DataSource = dt;
+            gvCreateTable.DataBind();
         }
 
         private void AddNewRowToGrid()
@@ -115,9 +116,9 @@ namespace VeriTabaniYonetimSistemi
                     for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
                     {
                       
-                        TextBox txtKolon = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
-                        ListBox lstVeri = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtKolonTipi");
-                        ListBox lstNull = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("lstisNull");
+                        TextBox txtKolon = (TextBox)gvCreateTable.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
+                        ListBox lstVeri = (ListBox)gvCreateTable.Rows[rowIndex].Cells[2].FindControl("lstVeriTipi");
+                        ListBox lstNull = (ListBox)gvCreateTable.Rows[rowIndex].Cells[3].FindControl("lstisNull");
 
                         drCurrentRow = dtCurrentTable.NewRow();
                         drCurrentRow["RowNumber"] = i + 1;
@@ -131,8 +132,8 @@ namespace VeriTabaniYonetimSistemi
                     dtCurrentTable.Rows.Add(drCurrentRow);
                     ViewState["CurrentTable"] = dtCurrentTable;
 
-                    Gridview1.DataSource = dtCurrentTable;
-                    Gridview1.DataBind();
+                    gvCreateTable.DataSource = dtCurrentTable;
+                    gvCreateTable.DataBind();
                 }
             }
             else
@@ -153,9 +154,9 @@ namespace VeriTabaniYonetimSistemi
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        TextBox txtKolon = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
-                        ListBox lstVeri = (ListBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtKolonTipi");
-                        ListBox lstNull = (ListBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("lstisNull");
+                        TextBox txtKolon = (TextBox)gvCreateTable.Rows[rowIndex].Cells[1].FindControl("txtKolonAdi");
+                        ListBox lstVeri = (ListBox)gvCreateTable.Rows[rowIndex].Cells[2].FindControl("lstVeriTipi");
+                        ListBox lstNull = (ListBox)gvCreateTable.Rows[rowIndex].Cells[3].FindControl("lstisNull");
 
                         txtKolon.Text = dt.Rows[i]["Column1"].ToString();
                         lstVeri.Text = dt.Rows[i]["Column2"].ToString();

@@ -52,7 +52,7 @@
 
                         <div class="icon1">
                             <span class="fa fa-lock"></span>
-                            <asp:TextBox ID="txtSifre" placeholder="Password" runat="server"></asp:TextBox>
+                            <asp:TextBox  ID="txtSifre" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvSifre" runat="server" Display="Dynamic" ForeColor="#FF3300" SetFocusOnError="true" ControlToValidate="txtSifre" ErrorMessage="Lütfen Giriş Yapabilmek için Şifrenizi Girin"></asp:RequiredFieldValidator>
                         </div>
                       <div class="" style=" background:#007cc0; height: 30px;"; >

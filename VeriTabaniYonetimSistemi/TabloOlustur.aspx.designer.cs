@@ -15,15 +15,6 @@ namespace VeriTabaniYonetimSistemi
     {
 
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
         /// lblTblAd control.
         /// </summary>
         /// <remarks>
@@ -42,13 +33,13 @@ namespace VeriTabaniYonetimSistemi
         protected global::System.Web.UI.WebControls.TextBox txtTblAd;
 
         /// <summary>
-        /// Gridview1 control.
+        /// gvCreateTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gridview1;
+        protected global::System.Web.UI.WebControls.GridView gvCreateTable;
 
         /// <summary>
         /// tblOlustur control.
