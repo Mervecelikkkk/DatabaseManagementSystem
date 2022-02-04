@@ -12,6 +12,8 @@ namespace VeriTabaniYonetimSistemi
 {
     public partial class VeriListeleme : System.Web.UI.Page
     {
+        //Database'de kayit olan her kullanici icin olusturulan semayi sessiondaki kullanici adindan kontrol edip listelenen tablolar dropdownlistten secilerek verileri gridviewde listele.
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -46,7 +48,6 @@ namespace VeriTabaniYonetimSistemi
                 }
             }
         }
-
         public void tableDataList()
         {
             try

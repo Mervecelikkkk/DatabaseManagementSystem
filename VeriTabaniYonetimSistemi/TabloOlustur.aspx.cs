@@ -13,7 +13,7 @@ namespace VeriTabaniYonetimSistemi
     public partial class TabloOlustur : System.Web.UI.Page
     {
 
-
+        //eklenilen verileri viewstateden kontrol et boş değilse gridview'de olusturulan textbox/listbox nesnelerinden verileri alıp tablo create et.
         protected void tblOlustur_Click(object sender, EventArgs e)
         {
   
@@ -80,7 +80,7 @@ namespace VeriTabaniYonetimSistemi
                 }
             }
         }
-
+        //İlk defa postback oluyorsa ilk satırın kolonlarını oluştur. Kolon Adı, Veri Tipi, Null vs..
         private void SetInitialRow()
         {
             DataTable dt = new DataTable();
@@ -103,6 +103,8 @@ namespace VeriTabaniYonetimSistemi
             gvCreateTable.DataBind();
         }
 
+        //Butona click ettiginde yeni bir satır daha ekle.
+        //Viewstate'i kontrol et, anlık verileri ekledigin datatable'ı oluşturduğun viewstate'te koy.
         private void AddNewRowToGrid()
         {
             int rowIndex = 0;
@@ -141,9 +143,10 @@ namespace VeriTabaniYonetimSistemi
                 Response.Write("ViewState is null");
             }
 
-            //Set Previous Data on Postbacks
+          
             SetPreviousData();
         }
+        //Postback olduğunda önceki veriyi viewstate'den alıp textlere yazdır.
         private void SetPreviousData()
         {
             int rowIndex = 0;
@@ -169,6 +172,7 @@ namespace VeriTabaniYonetimSistemi
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            //İlk defa postback oluyorsa ilk satırı oluştur.
             if (!Page.IsPostBack)
             {
                 SetInitialRow();

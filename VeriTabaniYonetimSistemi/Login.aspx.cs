@@ -21,10 +21,11 @@ namespace VeriTabaniYonetimSistemi
                 //lblMsj.Text = Session["KullaniciAd"].ToString();
 
             }
-         
-        
+
+
         }
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
+        //Kullanici giris bilgilerini db'den al checkk et index sayfasina yonlendir eslesmiyorsa hata mesaji yazdir.
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -42,7 +43,8 @@ namespace VeriTabaniYonetimSistemi
                 {
                     lblMsj.ForeColor = System.Drawing.Color.Green;
                     lblMsj.Text = "Login Başarılı";
-
+                    //Kullanici Rememeber Me checkbox'ini isaretlediyse kullanici adini cookie'de tur login ekrani cagirildiginde bilgiyi ilgili textbox'a yazdir.
+                    //Login basarili ise kullanici bilgilerini session'da tut.
                     if (chkRemember.Checked == true)
                     {
                         HttpCookie cookie = new HttpCookie("KullaniciBilgi");
@@ -53,7 +55,7 @@ namespace VeriTabaniYonetimSistemi
 
                         Session["KullaniciAd"] = txtKullaniciAd.Text;
                         Session["Sifre"] = txtSifre.Text;
-                    
+
 
                     }
                     Response.Redirect("index.aspx");
