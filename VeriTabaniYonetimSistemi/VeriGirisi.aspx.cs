@@ -45,27 +45,46 @@ namespace VeriTabaniYonetimSistemi
                 ListItem list = new ListItem("Tablo Seçimi Yapınız", "-1");
                 ddlTables.Items.Insert(0, list);
 
-                //for (int i = 1; i < 5; i++)
-                //{
-                //    TextBox txtBox = new TextBox();
-                //    txtBox.ID = "txt" + "Column" + i;
-                //    txtBox.Text = "";
-                //    txtBox.Width = 90;
-                //    txtBox.Height = 12;
-                //    txtBox.CssClass = "normal_fields";
-                //}
+  
 
             }
         }
+        public class GridViewTemplate : ITemplate
+        {
+            private string columnNameBinding;
+            private string columnname;
+
+            public GridViewTemplate(string colname, string colNameBinding)
+            {
+                columnNameBinding = colNameBinding;
+                columnname = colname;
+            }
+
+            public void InstantiateIn(System.Web.UI.Control container)
+            {
+                TextBox tb = new TextBox();
+                tb.ID = "txt" + columnNameBinding;
+              
+                tb.Text = columnname;//here to set the value of textbox
+                container.Controls.Add(tb);
+                
+                
+              
+            }
+
+
+        }
+
         private void SetRows()
         {
-    
-          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
+
+       
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
             if (Session["KullaniciAd"] != null)
             {
                 string sessionKAd = Session["KullaniciAd"].ToString();
 
-
+                
 
                 SqlCommand cmd = new SqlCommand(@"SELECT COLUMN_NAME,ORDINAL_POSITION,IS_NULLABLE,DATA_TYPE
                                                 FROM INFORMATION_SCHEMA.COLUMNS
@@ -81,39 +100,37 @@ namespace VeriTabaniYonetimSistemi
                 DataRow dr = null;
            
                 int rowIndex = 0;
-   
+                    dr = dt.NewRow();
+                    dt.Rows.Add(dr);
                 foreach (DataRow item in dsColumnList.Rows)
                 {
                     _columnName = item["COLUMN_NAME"].ToString();
                     _ordinalPosition = item["ORDINAL_POSITION"].ToString();
                     _isNullable = item["IS_NULLABLE"].ToString();
                     _dataType = item["DATA_TYPE"].ToString();
-
-                    //field.DataField = _columnName;
-                    //gvDataInput.Columns.Add(field);
+                    
+                   
                     //dt.Columns.Add(new DataColumn(_columnName, typeof(string)));
 
-                 
                     TemplateField field = new TemplateField();
                     field.HeaderText = _columnName;
-                    field.ItemTemplate = new GridViewTemplate("Column" + i.ToString(), i.ToString());
+                    field.ItemTemplate = new GridViewTemplate("Column" + i.ToString(), i.ToString());              
                     gvDataInput.Columns.Add(field);
 
-                    //string txtKolon = Request.Form["txt_columnName"];
+
                     //string txtSira = Request.Form["txt_ordinalPosition"];
                     //string txtNull = Request.Form["txt_isNullable"];
                     //string txtVeriTipi = Request.Form["txt_dataType"];
-
-                    //SqlCommand cmd1 = new SqlCommand("INSERT INTO" + sessionKAd + "." + ddlTables.SelectedItem.Text + "( name )VALUES(" +txtKolon+") ; ", conn);
-
-                    //cmd.ExecuteNonQuery();
-
-
-                    dr = dt.NewRow();
-                    dt.Rows.Add(dr);
+                    //TextBox txtVeri = (TextBox)gvDataInput.FindControl("txt"+i);
                   
+                        if (_columnName != "id")
+                    {
+                        SqlCommand cmd1 = new SqlCommand("INSERT INTO " + sessionKAd + "." + ddlTables.SelectedItem.Text + "( " + _columnName + ")VALUES('test')", conn);
+                        cmd1.ExecuteNonQuery();
+                    }
 
 
+                  
                     if (_dataType.Contains("varchar")) { TextBox txtBox1 = new TextBox(); }
                     else if (_dataType.Contains("int")) { TextBox txtBox2 = new TextBox(); }
                     else if (_dataType.Contains("date")) { DateTime txtBox3 = new DateTime(); }
@@ -183,7 +200,7 @@ namespace VeriTabaniYonetimSistemi
 
              
             }
-        
+            gvDataInput.Columns.Clear();
             lt1.Text = "<table><tr><td>başlık 1</td><td>başlık 2</td><td>başlık 3</td></tr><tr><td>xxx</td><td>yyy</td><td>zzz</td></tr></table>";
 
 
@@ -225,25 +242,8 @@ namespace VeriTabaniYonetimSistemi
 
         }
 
-        public class GridViewTemplate : ITemplate
-        {
-            private string columnNameBinding;
-            private string columnname;
-
-            public GridViewTemplate(string colname, string colNameBinding)
-            {
-                columnNameBinding = colNameBinding;
-                columnname = colname;
-            }
-
-            public void InstantiateIn(System.Web.UI.Control container)
-            {
-                TextBox tb = new TextBox();
-                tb.ID = "txtDynamic" + columnNameBinding;
-                tb.Text = columnname;//here to set the value of textbox
-                container.Controls.Add(tb);
-            }
-        }
+       
+       
         protected void gvDataInput_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
@@ -289,6 +289,10 @@ namespace VeriTabaniYonetimSistemi
                 gvDataInput.DataBind();
             }
         }
-       
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            SetRows();
+        }
     }
 }

@@ -91,7 +91,7 @@ namespace VeriTabaniYonetimSistemi
                 smtp.Port = 587;
                 emailid = txtEmail.Text;
                 smtp.Credentials = new NetworkCredential(
-                    "clkmerve3@gmail.com", "M1475963C9874123");
+                    "clkmerve3@gmail.com", "");
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
 

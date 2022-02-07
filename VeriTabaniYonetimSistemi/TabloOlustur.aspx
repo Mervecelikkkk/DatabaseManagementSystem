@@ -9,7 +9,7 @@
             <h3>Tablo Oluştur</h3>
           <hr />
           <asp:Label ID="lblTblAd" runat="server" Font-Bold="true" Text="Tablo Adı"></asp:Label>
-          <asp:TextBox ID="txtTblAd" runat="server"></asp:TextBox>
+          <asp:TextBox ID="txtTblAd" runat="server" ></asp:TextBox>
 
           <br />
 

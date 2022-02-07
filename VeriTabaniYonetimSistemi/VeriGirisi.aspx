@@ -21,20 +21,26 @@
             <SortedAscendingHeaderStyle BackColor="#808080" />
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#383838" />
-            <Columns>
-        <asp:TemplateField>
-            <ItemTemplate>
-                <asp:PlaceHolder runat='server' ID="PlaceHolder1"></asp:PlaceHolder>
-            </ItemTemplate>
-        </asp:TemplateField>
-    </Columns>
+     <%--       <Columns>
+
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:TextBox ID="txtVeri" runat="server"></asp:TextBox>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>--%>
+
+        </asp:GridView>
+
       
-            
-        </asp:gridview>
+
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
       
 
                 <asp:Literal ID="lt1" runat="server"></asp:Literal>
+                 
+                <asp:Button ID="Button1" runat="server"  Text="Button" OnClick="Button1_Click" />
                  
     </div>
 </asp:Content>
