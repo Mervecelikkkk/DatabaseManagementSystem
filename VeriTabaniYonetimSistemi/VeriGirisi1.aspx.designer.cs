@@ -11,7 +11,7 @@ namespace VeriTabaniYonetimSistemi
 {
 
 
-    public partial class TabloDuzenle
+    public partial class VeriGirisi1
     {
 
         /// <summary>
@@ -24,21 +24,30 @@ namespace VeriTabaniYonetimSistemi
         protected global::System.Web.UI.WebControls.DropDownList ddlTables;
 
         /// <summary>
-        /// gvEdit control.
+        /// gvDataInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEdit;
+        protected global::System.Web.UI.WebControls.GridView gvDataInput;
 
         /// <summary>
-        /// lblresult control.
+        /// lt1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblresult;
+        protected global::System.Web.UI.WebControls.Literal lt1;
+
+        /// <summary>
+        /// btnEkle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEkle;
     }
 }

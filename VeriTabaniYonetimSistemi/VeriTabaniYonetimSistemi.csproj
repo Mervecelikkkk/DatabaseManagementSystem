@@ -88,6 +88,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="TabloOlustur.aspx" />
+    <Content Include="VeriGirisi2.aspx" />
     <Content Include="VeriListeleme.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="VeriGirisi.aspx.designer.cs">
       <DependentUpon>VeriGirisi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VeriGirisi2.aspx.cs">
+      <DependentUpon>VeriGirisi2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VeriGirisi2.aspx.designer.cs">
+      <DependentUpon>VeriGirisi2.aspx</DependentUpon>
     </Compile>
     <Compile Include="VeriListeleme.aspx.cs">
       <DependentUpon>VeriListeleme.aspx</DependentUpon>

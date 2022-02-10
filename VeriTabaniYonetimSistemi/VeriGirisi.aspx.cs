@@ -68,10 +68,8 @@ namespace VeriTabaniYonetimSistemi
                 tb.Text = columnname;//here to set the value of textbox
                 container.Controls.Add(tb);
                 
-                
               
             }
-
 
         }
 
@@ -83,8 +81,6 @@ namespace VeriTabaniYonetimSistemi
             if (Session["KullaniciAd"] != null)
             {
                 string sessionKAd = Session["KullaniciAd"].ToString();
-
-                
 
                 SqlCommand cmd = new SqlCommand(@"SELECT COLUMN_NAME,ORDINAL_POSITION,IS_NULLABLE,DATA_TYPE
                                                 FROM INFORMATION_SCHEMA.COLUMNS
