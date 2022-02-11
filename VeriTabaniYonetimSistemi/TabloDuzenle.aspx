@@ -9,7 +9,7 @@
      <asp:DropDownList ID="ddlTables"  DataTextField="table_name" DataValueField="table_name"  runat="server" OnSelectedIndexChanged="ddlTables_SelectedIndexChanged" AutoPostBack="true">
     </asp:DropDownList>
     <br />
-    <asp:GridView ID="gvEdit" runat="server" AutoGenerateColumns="true" DataKeyNames="COLUMN_NAME" OnRowEditing="gvEdit_RowEditing" OnRowUpdating="gvEdit_RowUpdating" OnPageIndexChanging="gvEdit_PageIndexChanging" OnRowCancelingEdit="gvEdit_RowCancelingEdit" OnRowDeleting="gvEdit_RowDeleting" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" >
+    <asp:GridView ID="gvEdit" runat="server" AutoGenerateColumns="false" DataKeyNames="COLUMN_NAME" OnRowEditing="gvEdit_RowEditing" OnRowUpdating="gvEdit_RowUpdating" OnPageIndexChanging="gvEdit_PageIndexChanging" OnRowCancelingEdit="gvEdit_RowCancelingEdit" OnRowDeleting="gvEdit_RowDeleting" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" >
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
@@ -20,6 +20,9 @@
         <SortedDescendingCellStyle BackColor="#CAC9C9" />
         <SortedDescendingHeaderStyle BackColor="#383838" />
         <Columns>
+              <asp:BoundField DataField="COLUMN_NAME" HeaderText="Kolon Adı" />  
+              <asp:BoundField DataField="DATA_TYPE" HeaderText="Veri Tipi" />  
+              <asp:BoundField DataField="IS_NULLABLE" HeaderText="Boş Değer" />  
             <asp:CommandField ShowEditButton="true" />
             <asp:CommandField ShowDeleteButton="true" />
         </Columns>

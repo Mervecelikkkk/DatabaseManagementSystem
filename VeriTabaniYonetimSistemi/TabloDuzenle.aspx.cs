@@ -16,39 +16,39 @@ namespace VeriTabaniYonetimSistemi
 
 
         protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
             {
-                if (!IsPostBack)
+                if (Session["KullaniciAd"] != null)
                 {
-                    if (Session["KullaniciAd"] != null)
+                    string sessionKAd = Session["KullaniciAd"].ToString();
+                    try
                     {
-                        string sessionKAd = Session["KullaniciAd"].ToString();
-                        try
+                        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
                         {
-                            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
-                            {
-                                SqlCommand cmd = new SqlCommand(@"select schema_name(t.schema_id) as schema_name,
+                            SqlCommand cmd = new SqlCommand(@"select schema_name(t.schema_id) as schema_name,
                                                       t.name as table_name,
                                                       t.create_date,
                                                       t.modify_date
                                                       from sys.tables t
                                                       where schema_name(t.schema_id) ='" + sessionKAd +
-                                                              "' order by table_name;", conn);
+                                                          "' order by table_name;", conn);
 
-                                conn.Open();
-                                ddlTables.DataSource = cmd.ExecuteReader();
-                                ddlTables.DataBind();
-                                ListItem itemSelect = new ListItem("Tablo Seçimi Yapınız", "-1");
-                                ddlTables.Items.Insert(0, itemSelect);
-                            }
+                            conn.Open();
+                            ddlTables.DataSource = cmd.ExecuteReader();
+                            ddlTables.DataBind();
+                            ListItem itemSelect = new ListItem("Tablo Seçimi Yapınız", "-1");
+                            ddlTables.Items.Insert(0, itemSelect);
                         }
-                        catch (Exception ex)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
-                            return;
-                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
+                        return;
                     }
                 }
             }
+        }
         public void tableDataEdit()
         {
             try
@@ -64,7 +64,7 @@ namespace VeriTabaniYonetimSistemi
 
                         //SqlCommand cmd = new SqlCommand(@" SELECT ORDINAL_POSITION, COLUMN_NAME, IS_NULLABLE, DATA_TYPE from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='" + sessionKAd + "' " + "AND table_name = '" + ddlTables.SelectedItem.Text + "'", conn);
                         SqlCommand cmd = new SqlCommand(@" SELECT COLUMN_NAME, IS_NULLABLE, DATA_TYPE from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='" + sessionKAd + "' " + "AND table_name = '" + ddlTables.SelectedItem.Text + "'", conn);
-                  
+
                         conn.Open();
 
                         SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -110,19 +110,20 @@ namespace VeriTabaniYonetimSistemi
                         GridViewRow row = (GridViewRow)gvEdit.Rows[e.RowIndex];
                         Label lbldeleteid = (Label)row.FindControl("lblID");
                         conn.Open();
-                        SqlCommand cmd = new SqlCommand("alter table " + sessionKAd + "." + ddlTables.SelectedItem.Text+ " drop column " + Convert.ToString(gvEdit.DataKeys[e.RowIndex].Value.ToString()), conn);
-                 
+                        SqlCommand cmd = new SqlCommand("alter table " + sessionKAd + "." + ddlTables.SelectedItem.Text + " drop column " + Convert.ToString(gvEdit.DataKeys[e.RowIndex].Value.ToString()), conn);
+
                         cmd.ExecuteNonQuery();
                         conn.Close();
                         tableDataEdit();
                     }
-        }
-                catch
-                {
-
                 }
-        }
-          
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
+                    return;
+                }
+            }
+
         }
         protected void gvEdit_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -139,24 +140,45 @@ namespace VeriTabaniYonetimSistemi
                     string columnName = Convert.ToString(gvEdit.DataKeys[e.RowIndex].Value.ToString());
                     GridViewRow row = (GridViewRow)gvEdit.Rows[e.RowIndex];
                     Label lblID = (Label)row.FindControl("lblID");
-                    TextBox colname = (TextBox)row.Cells[2].Controls[0];
-                    TextBox dataType = (TextBox)row.Cells[3].Controls[0];
-                    TextBox isNull = (TextBox)row.Cells[4].Controls[0];
-                    gvEdit.EditIndex = -1;
+                    TextBox colname = (TextBox)row.Cells[0].Controls[0];
+                    TextBox dataType = (TextBox)row.Cells[1].Controls[0];
+                
+                    TextBox isNull = (TextBox)row.Cells[2].Controls[0];
+                    if (isNull.Text == "YES")
+                        isNull.Text = "NULL";
+                    else
+                        isNull.Text = "NOT NULL";
+
+                        gvEdit.EditIndex = -1;
                     SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ToString());
                     {
+                        DataTable dt = new DataTable();
+
 
                         conn.Open();
-                        //SqlCommand cmd = new SqlCommand("update detail set name='" + colname.Text + "',address='" + dataType.Text + "',country='" + isNull.Text + "'where id='" + userid + "'", conn);
-                        //cmd.ExecuteNonQuery();
-                        conn.Close();
-                        tableDataEdit();
+
+
+
+
+
+                        SqlCommand cmdColumn = new SqlCommand(" EXEC sp_RENAME '" + sessionKAd + "." + ddlTables.SelectedItem.Text + "." + columnName + "', '" + colname.Text + "' , 'COLUMN '", conn);
+                        SqlCommand cmdDataType = new SqlCommand("ALTER TABLE " + sessionKAd + "." + ddlTables.SelectedItem.Text + " ALTER COLUMN " + colname.Text + " " + dataType.Text+" "+isNull.Text, conn);
+
+
+                        cmdColumn.ExecuteNonQuery();
+                        cmdDataType.ExecuteNonQuery();
 
                     }
+                    conn.Close();
 
+                    tableDataEdit();
                 }
-                catch { }
-        }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Bir Hata Oluştu:" + ex.Message.ToString() + "');", true);
+                    return;
+                }
+            }
         }
         protected void gvEdit_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

@@ -40,7 +40,7 @@ namespace VeriTabaniYonetimSistemi
                                 if (dt.Rows.Count > 0)
                                 {
 
-                                    StrQuery = @"CREATE TABLE " +sessionKAd+"."+txtTblAd.Text + "(id int primary key identity(1,1), kullaniciid int, ";
+                                    StrQuery = @"CREATE TABLE " +sessionKAd+"."+txtTblAd.Text + "(id int primary key identity(1,1), ";
 
                                     for (int i = 0; i < dt.Rows.Count; i++)
                                     {
@@ -64,14 +64,18 @@ namespace VeriTabaniYonetimSistemi
 
                                     cmd.CommandText = StrQuery;
                                     cmd.ExecuteNonQuery();
+                                   
+                                   
 
                                 }
+                               
                             }
 
 
                         }
                     }
-                    
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Tablo Başarıyla Oluşturuldu.');", true);
+
                 }
                 catch (Exception ex)
                 {
@@ -136,13 +140,15 @@ namespace VeriTabaniYonetimSistemi
 
                     gvCreateTable.DataSource = dtCurrentTable;
                     gvCreateTable.DataBind();
+                 
                 }
+              
             }
             else
             {
                 Response.Write("ViewState is null");
             }
-
+           
           
             SetPreviousData();
         }
@@ -185,7 +191,8 @@ namespace VeriTabaniYonetimSistemi
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             AddNewRowToGrid();
-           
+    
+
         }
 
 
